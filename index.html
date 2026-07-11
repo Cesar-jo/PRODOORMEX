@@ -58,6 +58,56 @@
         footer input, footer textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 4px; border: none; }
         button { background: var(--primary); color: white; border: none; padding: 10px 20px; width: 100%; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         button:hover { background: #a30000; }
+
+        /* --- Ajustes Responsivos --- */
+
+/* Ajustes para tabletas y dispositivos medianos */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 2.5rem; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Ajustes para móviles (pantallas pequeñas) */
+@media (max-width: 768px) {
+    /* Header: apilar logo y menú */
+    header { flex-direction: column; padding: 20px; gap: 15px; }
+    nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+    
+    /* Hero: texto más pequeño */
+    .hero { height: 60vh; }
+    .hero h1 { font-size: 2rem; }
+    
+    /* Grids: una sola columna */
+    .exp-grid, .grid, .footer-grid { grid-template-columns: 1fr; }
+    
+    /* Ajuste de tarjetas */
+    .card { height: 350px; }
+}
+
+/* Ajuste específico para evitar scroll horizontal en dispositivos muy angostos */
+body { max-width: 100vw; }
+
+/* Estilos para el menú hamburguesa */
+@media (max-width: 768px) {
+    .menu-toggle { display: block !important; }
+    
+    nav { 
+        display: none; 
+        width: 100%; 
+        position: absolute; 
+        top: 60px; 
+        left: 0; 
+        background: var(--white); 
+        border-bottom: 3px solid var(--primary);
+    }
+    nav.active { display: block; }
+    nav ul { 
+        flex-direction: column; 
+        align-items: center; 
+        padding: 20px; 
+        gap: 15px; 
+    }
+}
     </style>
 </head>
 <body>
@@ -66,7 +116,21 @@
 
 <header>
     <div class="logo-container"><i class="fas fa-door-closed"></i> PRODOORMEX</div>
-    <nav><ul><li><a href="#inicio">Inicio</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#experiencia">Experiencia</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+    
+    <!-- Botón de Hamburguesa -->
+    <div class="menu-toggle" onclick="toggleMenu()" style="display: none; cursor: pointer; font-size: 1.5rem;">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <nav id="nav-menu">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 </header>
 
 <section id="inicio" class="hero">
@@ -158,6 +222,18 @@
         }, 80);
     }
     iniciarContador();
+
+    function toggleMenu() {
+        const nav = document.getElementById('nav-menu');
+        nav.classList.toggle('active');
+    }
+
+    // Cerrar menú al hacer clic en un enlace (opcional pero recomendado)
+    document.querySelectorAll('#nav-menu a').forEach(link => {aa
+        link.addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.remove('active');
+        });
+    });
 </script>
 </body>
 </html>

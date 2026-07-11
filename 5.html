@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodoormex | Professional Doors México</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #cc0000; --dark: #1a1a1a; --white: #ffffff; --light: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: #333; line-height: 1.6; overflow-x: hidden; }
+
+        .door-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); display: flex; justify-content: center; align-items: center; z-index: 9999; animation: openDoor 2s ease-in-out forwards; }
+        @keyframes openDoor { 0% { transform: scaleX(1); } 80% { transform: scaleX(0); } 100% { display: none; } }
+        .door-overlay h1 { color: var(--primary); font-size: 3rem; letter-spacing: 5px; }
+
+        header { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--primary); }
+        .logo-container { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.4rem; color: var(--primary); }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        .hero { height: 70vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 25px; }
+        .btn-main { background: var(--primary); color: white; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; display: inline-block; }
+        .btn-main:hover { transform: scale(1.05); background: #a30000; }
+
+        .experiencia { padding: 80px 10%; text-align: center; background: var(--light); }
+        .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
+        .exp-card { padding: 20px; background: white; border-radius: 10px; transition: transform 0.3s; }
+        .exp-card:hover { transform: translateY(-10px); }
+        .exp-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* Estilos Flip Cards */
+        .servicios { padding: 80px 5%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; perspective: 1000px; }
+        .card { height: 320px; cursor: pointer; background: transparent; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+        .card:hover .card-inner { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; border-radius: 8px; border-top: 5px solid var(--primary); box-sizing: border-box; }
+        .card-front { background: var(--light); }
+        .card-back { background: var(--dark); color: white; transform: rotateY(180deg); padding: 20px; font-size: 0.9rem; overflow-y: auto; }
+        .card-front i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; display: block; }
+
+        .clientes { background: #f9f9f9; padding: 60px 0; text-align: center; }
+        .slider-container { display: flex; justify-content: center; overflow: hidden; width: 100%; }
+        .slider { display: flex; gap: 80px; animation: scroll 15s linear infinite; }
+        .slider img { height: 50px; filter: grayscale(1); transition: 0.4s; }
+        .slider img:hover { filter: grayscale(0); transform: scale(1.2); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        footer { background: var(--dark); color: white; padding: 60px 5%; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        footer h3 { color: var(--primary); margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        footer ul { list-style: none; padding: 0; font-size: 0.9rem; }
+        footer li { margin-bottom: 8px; }
+        footer input, footer textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 4px; border: none; }
+        button { background: var(--primary); color: white; border: none; padding: 10px 20px; width: 100%; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #a30000; }
+    </style>
+</head>
+<body>
+
+<div class="door-overlay"><h1>PRODOORMEX</h1></div>
+
+<header>
+    <div class="logo-container"><i class="fas fa-door-closed"></i> PRODOORMEX</div>
+    <nav><ul><li><a href="#inicio">Inicio</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#experiencia">Experiencia</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+</header>
+
+<section id="inicio" class="hero">
+    <h1 data-aos="zoom-in" data-aos-duration="1200">Prodoormex</h1>
+    <p data-aos="fade-up" data-aos-delay="300">
+        Expertos en soluciones de acceso industrial con más de 20 años de experiencia. 
+        <br><br>
+        <span style="font-size: 0.85em; opacity: 0.9;">Suministro, instalación y mantenimiento de puertas, cortinas y andenes para la industria más exigente.</span>
+    </p>
+    <a href="#contacto" class="btn-main" data-aos="fade-up" data-aos-delay="600">Conoce más</a>
+</section>
+
+<!-- Sección Nosotros -->
+<section id="nosotros" style="padding: 80px 10%; background: #ffffff; text-align: center;">
+    <div style="max-width: 900px; margin: auto;">
+        <h2 data-aos="fade-up" style="color: var(--primary); margin-bottom: 40px;">¿QUIÉNES SOMOS?</h2>
+        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.1rem; margin-bottom: 50px;">
+            Suministramos equipos de acceso. Representando solo las mejores marcas, nos dedicamos a brindar soluciones, asesoría, capacitación, venta e instalación de todo tipo de aperturas, garantizando la satisfacción de nuestros clientes en cada proyecto llave en mano que entregamos.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px;">
+            <div data-aos="fade-right" data-aos-delay="300" style="background: var(--light); padding: 30px; border-radius: 8px;">
+                <h3 style="color: var(--primary);">Nuestra Misión</h3>
+                <p style="font-size: 0.95rem;">Brindar un servicio completo en cada proyecto, cumpliendo con cada especificación basada en las normas americana (ANSI) y europea (EN). Nuestra asesoría integra las marcas más apropiadas para lograr ahorros importantes en tiempo y costos, generando confianza y seguridad.</p>
+            </div>
+            <div data-aos="fade-left" data-aos-delay="400" style="background: var(--light); padding: 30px; border-radius: 8px;">
+                <h3 style="color: var(--primary);">Nuestra Visión</h3>
+                <p style="font-size: 0.95rem;">Siempre promoveremos la calidad y capacidad de nuestro personal con gran experiencia en la industria. Seguiremos el compromiso de cumplir con cada requerimiento de manera eficiente e integral, manteniendo nuestro firme compromiso con la filosofía de <strong>Lean Construction</strong>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experiencia" class="experiencia">
+    <h2 data-aos="fade-up">NUESTRA TRAYECTORIA</h2>
+    <div class="exp-grid">
+        <div class="exp-card" data-aos="fade-right" data-aos-delay="100">
+            <i class="fas fa-history"></i>
+            <h3>+<span id="contador">0</span> Años</h3>
+            <p>Experiencia acumulada en el sector.</p>
+        </div>
+        <div class="exp-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-globe-americas"></i><h3>Cobertura</h3><p>México, Centro América y el Caribe.</p></div>
+        <div class="exp-card" data-aos="fade-left" data-aos-delay="500"><i class="fas fa-file-contract"></i><h3>Normativas</h3><p>ASEO, EN, UL en ambientes críticos.</p></div>
+    </div>
+</section>
+
+<section id="servicios" class="servicios">
+    <h2 style="text-align:center; color: var(--primary);" data-aos="fade-down">NUESTROS SERVICIOS</h2>
+    <div class="grid">
+        <div class="card" data-aos="flip-left" data-aos-delay="100"><div class="card-inner"><div class="card-front"><i class="fas fa-drafting-compass"></i><h3>Especificación de proyectos</h3></div><div class="card-back"><p>Revisión de necesidades en proyectos industriales para una adecuada solución conforme a estándares internacionales y aseguradoras globales.</p></div></div></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="200"><div class="card-inner"><div class="card-front"><i class="fas fa-truck-loading"></i><h3>Venta y suministros</h3></div><div class="card-back"><p>Representantes de las mejores marcas para resolver cualquier necesidad en accesos peatonales e industriales.</p></div></div></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="300"><div class="card-inner"><div class="card-front"><i class="fas fa-tasks"></i><h3>Manejo de proyectos</h3></div><div class="card-back"><p>Aseguramos la conclusión del proyecto cumpliendo especificaciones, optimizando tiempos y recursos con personal altamente calificado.</p></div></div></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="400"><div class="card-inner"><div class="card-front"><i class="fas fa-tools"></i><h3>Instalación</h3></div><div class="card-back"><p>Nuestro personal cuenta con alta cualificación y entrenamiento especializado por capacitadores miembros de DHI (Door & Hardware Institute).</p></div></div></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="500"><div class="card-inner"><div class="card-front"><i class="fas fa-chalkboard-teacher"></i><h3>Capacitación</h3></div><div class="card-back"><p>Cursos y seminarios informativos para profesionales basados en los requerimientos y estándares de DHI (Door and Hardware Institute).</p></div></div></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="600"><div class="card-inner"><div class="card-front"><i class="fas fa-shield-alt"></i><h3>Mantenimiento</h3></div><div class="card-back"><p>Análisis técnicos y valoración de desempeño para detectar puntos de riesgo que comprometan la seguridad de los usuarios.</p></div></div></div>
+    </div>
+</section>
+
+<section id="clientes" class="clientes" data-aos="fade-up">
+    <h2>HEMOS TRABAJADO CON</h2>
+    <div class="slider-container">
+        <div class="slider" onmouseover="this.style.animationPlayState='paused'" onmouseout="this.style.animationPlayState='running'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Honda.svg" alt="Honda">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW">
+        </div>
+    </div>
+</section>
+
+<footer id="contacto" data-aos="fade-up">
+    <div class="footer-grid">
+        <div><h3>Servicios</h3><ul><li>Especificación de Proyectos</li><li>Venta y Suministros</li><li>Manejo y Control</li><li>Instalación Profesional</li><li>Capacitación Técnica</li><li>Mantenimiento Preventivo/Correctivo</li></ul></div>
+        <div><h3>Productos</h3><ul><li>Rampas Niveladoras</li><li>Sellos y Abrigos de Andén</li><li>Cortinas Industriales</li><li>Puertas Certificadas UL</li><li>Muros Móviles</li><li>Herrajes Industriales</li></ul></div>
+        <div><h3>Contacto</h3><p>Tel: 442 612 0275<br>Email: info@prodoormex.com<br>Atención: México, Centro América y el Caribe.</p></div>
+        <div><h3>Solicitar Info</h3><form><input type="text" placeholder="Nombre"><input type="email" placeholder="Correo"><textarea placeholder="Mensaje"></textarea><button>Enviar Solicitud</button></form></div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: false });
+    function iniciarContador() {
+        const contador = document.getElementById('contador');
+        let valor = 0;
+        let incremento = setInterval(() => {
+            valor++;
+            contador.innerText = valor;
+            if (valor >= 20) { clearInterval(incremento); setTimeout(iniciarContador, 2000); }
+        }, 80);
+    }
+    iniciarContador();
+</script>
+</body>
+</html>
